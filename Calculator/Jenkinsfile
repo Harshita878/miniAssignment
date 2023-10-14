@@ -1,29 +1,25 @@
-pipeline{
- agent any
- environment {
-PATH ="/usr/share/maven:$PATH"
-}
+pipeline {
+    agent any
+    environment {
+        PATH = "/usr/share/maven:$PATH"
+    }
 
+    stages {
+        stage("Maven Build") {
+            steps {
+                sh "mvn -f Calculator/pom.xml clean install"
+            }
+        }
 
-
-stages{
-    stage("Maven Build"){
-        steps{
-            sh" mvn -f Calculator/pom.xml clean install"
+        stage("Unit Testing") {
+            steps {
+                sh "mvn -f Calculator/pom.xml test"
+            }
         }
     }
 
-        stage("Unit Testing"){
-        steps{
-            sh "mvn -f Calculator/pom.xml test"
-        }
-    }
-
-
-}
-
-      post{
-        always{
+    post {
+        always {
             mail to: "harshitaagrawal091@gmail.com",
             subject: "Jenkins Job with Build #${BUILD_NUMBER}",
             body: "Jenkins Job with Build #${BUILD_NUMBER}. Please go to ${BUILD_URL} and verify the build."
