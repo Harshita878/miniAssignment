@@ -17,12 +17,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            mail to: "harshitaagrawal091@gmail.com",
-            subject: "Jenkins Job with Build #${BUILD_NUMBER}",
-            body: "Jenkins Job with Build #${BUILD_NUMBER}. Please go to ${BUILD_URL} and verify the build."
-        }
-    }
 }
