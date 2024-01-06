@@ -17,9 +17,9 @@ pipeline {
             steps {
                 script {
                     if (params.Environment == 'Dev') {
-                        checkout scmGit(branches: [[name: '*/Dev']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'Calculator']]]], userRemoteConfigs: [[credentialsId: 'jenkinstoken', url: 'https://git.nagarro.com/freshertraining2023/harshitaagrawal.git']])
+                        checkout scmGit(branches: [[name: '*/Dev']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'Calculator']]]], userRemoteConfigs: [[credentialsId: '', url: ' https://github.com/Harshita878/miniAssignment.git']])
                     } else if (params.Environment == 'Prod') {
-                        checkout scmGit(branches: [[name: '*/Prod']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'Calculator']]]], userRemoteConfigs: [[credentialsId: 'jenkinstoken', url: 'https://git.nagarro.com/freshertraining2023/harshitaagrawal.git']])
+                        checkout scmGit(branches: [[name: '*/Prod']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'Calculator']]]], userRemoteConfigs: [[credentialsId: '', url: ' https://github.com/Harshita878/miniAssignment.git']])
                     } else {
                         error('Invalid choice')
                     }
