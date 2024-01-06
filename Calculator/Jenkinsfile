@@ -21,7 +21,7 @@ pipeline {
            stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('server-sonar') {
-                    sh "sudo mvn -f Calculator/pom.xml clean install sonar:sonar"
+                    sh "mvn -f Calculator/pom.xml clean install sonar:sonar"
                 }
             }
         }
